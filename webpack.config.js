@@ -6,7 +6,7 @@ const dir = (src) => path.join(__dirname, src)
 
 
 module.exports = {
-  entry: dir('src'),
+  entry: dir('src/app.main.js'),
   output: {
     path: dir('public'),
     filename: 'bundle.js'
@@ -21,12 +21,15 @@ module.exports = {
       {
         test: /\.s(a|c)ss$/,
         include: dir('src'),
-        use: ExtractTextPlugin.extract(['sass-loader', 'postcss-loader', 'css-loader'])
+        use: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', 'sass-loader'])
       }
     ]
   },
   devServer: {
-
+    contentBase: dir('public'),
+    compress: true,
+    port: 3000,
+    hot: true
   },
   plugins: [
     new ExtractTextPlugin('style.css'),
