@@ -10,7 +10,9 @@ export default (state=initialState, action) => {
 
   switch(action.type) {
     case TOGGLE_AUTH:
-      return assign(state, payload.logState)
+      return assign(state, {
+        isAuthenticated: action.payload.logState
+      })
     default:
       return state
   }

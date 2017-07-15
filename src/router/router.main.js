@@ -18,7 +18,7 @@ export default () => (
     </Navbar>
     <Switch>
       <Home path="/" exact />
-      <Login path="/login" />
+      <Login path="/login" authRequired />
     </Switch>
   </Router>
 )

@@ -1,10 +1,8 @@
 import React from 'react'
-import ViewsHOC from '../../HOC/view'
+import ViewsHOC from '../../HOC/view.hoc'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
-const Login = () => (
-  <div className="Login">
-    <h1>Login Page</h1>
-  </div>
-)
 
+const Login = () => <Redirect to='/' />
 export default ViewsHOC(Login)

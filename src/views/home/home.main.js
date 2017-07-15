@@ -1,8 +1,8 @@
 import React from 'react'
-import ViewsHOC from '../../HOC/view'
+import ViewsHOC from '../../HOC/view.hoc'
 
 const Home = () => (
-  <div className="Home">
+  <div className="home view">
     <h1>Home Page</h1>
   </div>
 )
