@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-
+import './auth.style.sass'
 
 export default class AuthPage extends React.Component {
   constructor(props) {
@@ -23,7 +23,9 @@ export default class AuthPage extends React.Component {
     return (
       redirect ? <Redirect to='/login' /> : (
         <div className="auth view">
-          <h1><a onClick={clickHandler}>Sign in</a> to view this page</h1>
+          <h1>
+            <a className="sign-up" onClick={clickHandler}>Sign in</a> to view this page
+          </h1>
         </div>
       )
     )

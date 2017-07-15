@@ -13,13 +13,13 @@ import Login     from '../views/login/login.main'
 
 export default () => (
   <Router>
-    <Navbar>
+    {/* <Navbar>
       <Navlink to="/" text="Home" />
       <Navlink to="/dashboard" text="Dashboard" />
       <Navlink to="/login" text="Login" />
-    </Navbar>
+    </Navbar> */}
     <Switch>
-      <Home path="/" exact />
+      <Home path="/" authRequired exact />
       <Dashboard path="/dashboard" authRequired />
       <Login path="/login" />
     </Switch>
