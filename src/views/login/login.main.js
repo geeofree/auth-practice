@@ -1,8 +1,14 @@
 import React from 'react'
-import ViewsHOC from '../../HOC/view.hoc'
-import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import ViewHOC from '../../HOC/view.hoc'
+import LoginForm from './login.form'
 
 
-const Login = () => <Redirect to='/' />
-export default ViewsHOC(Login)
+const Login = ({ isLogged }) => isLogged ? <Redirect to='/'/> : <LoginForm />
+
+const mapStateToProps = (state) => ({
+  isLogged: state.auth.isAuthenticated
+})
+
+export default ViewHOC(connect(mapStateToProps)(Login))

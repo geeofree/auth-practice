@@ -1,19 +1,31 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { toggleAuth } from '../../actions/auth.action'
+import { Redirect } from 'react-router-dom'
 
 
-const AuthPage = ({ isLogged, toggleAuth }) => (
-  <div className="login view">
-    <h1>You must be logged in in order to view this page.</h1>
-    <button onClick={() => toggleAuth(!isLogged)}>
-        Log in
-    </button>
-  </div>
-)
+export default class AuthPage extends React.Component {
+  constructor(props) {
+    super(props)
+    this.clickHandler = this.clickHandler.bind(this)
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleAuth: logState => dispatch(toggleAuth(logState))
-})
+    this.state = {
+      redirect: false
+    }
+  }
 
-export default connect(null, mapDispatchToProps)(AuthPage)
+  clickHandler(e) {
+    this.setState({ redirect: true })
+  }
+
+  render() {
+    const { clickHandler } = this
+    const { redirect } = this.state
+
+    return (
+      redirect ? <Redirect to='/login' /> : (
+        <div className="auth view">
+          <h1><a onClick={clickHandler}>Sign in</a> to view this page</h1>
+        </div>
+      )
+    )
+  }
+}
