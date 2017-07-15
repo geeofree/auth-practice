@@ -2,6 +2,12 @@ import React from 'react'
 import { render } from 'react-dom'
 import './app.style.sass'
 
-const HelloWorld = () => <h1>HelloWorld</h1>
+import AppRoutes from './router/router.main'
+
+const App = () => (
+    <AppRoutes />
+)
+
+
 const root = document.getElementById('root')
-render(<HelloWorld></HelloWorld>, root)
+render(<App />, root)
