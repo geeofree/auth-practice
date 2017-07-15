@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 
-export default ({ exact, to, text }) => (
-  <Link exact={exact} to={to} className="navlink">{text}</Link>
+export default ({ to, text }) => (
+  <Link to={to}>
+    <div className="navlink">{text}</div>
+  </Link>
 )

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Route, Switch } from 'react-router'
+import { Route, Switch } from 'react-router-dom'
+import './router.style.sass'
 
 import Router from './router'
 import Navbar from './navbar'
@@ -12,8 +13,8 @@ import Login from '../views/login/login.main'
 export default () => (
   <Router>
     <Navbar>
-      <Navlink text="/" exact />
-      <Navlink text="/login" />
+      <Navlink to="/" text="Home" />
+      <Navlink to="/login" text="Login" />
     </Navbar>
     <Switch>
       <Home path="/" exact />
