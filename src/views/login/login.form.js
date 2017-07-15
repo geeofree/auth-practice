@@ -20,19 +20,31 @@ class LoginForm extends React.Component {
     this.setState({ [target.name]: target.value })
   }
 
-  submitHandler(event) {
-    event.preventDefault()
-    console.log(event, this.state)
+  submitHandler(e) {
+    e.preventDefault()
+
+    const { state, props } = this
+    const { users, toggleAuth } = props
+    const user = users.filter(user => state.username === user.username && state.password === user.password)[0]
+
+    if(user) {
+      toggleAuth(true)
+    }
+    else {
+      alert('Invalid username or password')
+      this.setState({ username: '', password: '' })
+    }
   }
 
   render() {
-    const { submitHandler, changeHandler } = this
-    const { toggleAuth } = this.props
+    const { submitHandler, changeHandler, state, props } = this
+    const { toggleAuth } = props
 
     return (
       <div className="login view">
         <form onSubmit={submitHandler} className="sign-in">
           <TextField
+            value={state.username}
             type="text"
             name="username"
             label="Username"
@@ -40,6 +52,7 @@ class LoginForm extends React.Component {
             changeHandler={changeHandler} />
 
           <TextField
+            value={state.password}
             type="password"
             name="password"
             label="Password"
@@ -53,9 +66,13 @@ class LoginForm extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  users: state.auth.users
+})
+
 const mapDispatchToProps = (dispatch) => ({
   toggleAuth: (logState) => dispatch(toggleAuth(logState))
 })
 
 
-export default connect(null, mapDispatchToProps)(LoginForm)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
