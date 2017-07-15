@@ -2,10 +2,15 @@ import React from 'react'
 import { render } from 'react-dom'
 import './app.style.sass'
 
+import state from './app.state'
+import { Provider } from 'react-redux'
+
 import AppRoutes from './router/router.main'
 
 const App = () => (
-    <AppRoutes />
+  <Provider store={state}>
+    <AppRoutes></AppRoutes>
+  </Provider>
 )
 
 
